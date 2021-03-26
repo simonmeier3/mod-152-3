@@ -44,6 +44,19 @@ app.post('/api/videos', upload.array('files'), (req,res,next ) => {
             .mergeToFile(process.cwd() + '/merged.mp4');
             console.log(process.cwd() + '/merged.mp4');
     }
+
+    function response() {
+        res.json({
+                data: {
+                    video: {
+                        location: "http://localhost/api/video/merged.mp4"
+                    }
+                }
+            }
+        );
+    }
+
+
 });
 
 app.listen(process.env.PORT || 3000);
